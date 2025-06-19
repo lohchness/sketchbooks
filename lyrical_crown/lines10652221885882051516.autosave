@@ -1,0 +1,41 @@
+final int BARS = 60;
+final float BASE_THICKNESS = 0.5;
+final int BAR_THICKNESS = 4;
+final int BAR_MAX_LENGTH = 250;
+
+final int startX = 50, startY = 400;
+
+final int BAR_WIDTH = 10;
+final int BAR_GAP = 15;
+
+void draw_base() {
+  strokeWeight(BASE_THICKNESS);
+  
+  int currx = startX, curry = startY;
+  
+  for (int i=0; i<BARS; i++) {
+    
+    line(currx, curry, currx+BAR_WIDTH, curry);
+    
+    currx += BAR_GAP;
+  }
+}
+
+void draw_bars() {
+
+    int currx = startX;
+  
+  for (int i=0; i<BARS; i++) {
+
+    float extendingBarLength = 0;
+
+    if (sum[0] != 0) {
+        if (i >= 0 && i <= 30) {
+            extendingBarLength = map(sum[30 - round(map(30, 0, 30, 0, 80))], 0, 0.8, extendingBarLength - extendingBarLength / 8, extendingLinesMax * 1.5);
+        }
+    }
+
+    rect(currx, startY, BAR_WIDTH, extendingBarLength);
+  }
+  
+}
