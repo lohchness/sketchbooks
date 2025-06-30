@@ -36,11 +36,11 @@ void setup() {
     
     minim = new Minim(this);
     track = minim.loadFile(trackname, 4096);
-    track.setGain(-20);
-    //track.loop();
+    //track.setGain(-20);
+    track.loop();
     //currentScalar = 75;
     //targetScalar = 75;
-    track.skip(23250);
+    //track.skip(23250);
 }
 
 void draw() {
@@ -50,8 +50,8 @@ void draw() {
     
     targetScalar += 1/60f;
     
-    currentScalar = lerp(currentScalar, targetScalar, .05);
-    //currentScalar = float(frameCount * 25) / 360;
+    //currentScalar = lerp(currentScalar, targetScalar, .05);
+    currentScalar = float(frameCount * 25) / 360;
 
     position.set((noise(frequencyX) - .5) * width, (noise(frequencyY) - .5) * height);
     frequencyX += .01;
@@ -83,9 +83,9 @@ void draw() {
         popMatrix();
     }
 
-    colorMode(RGB, 255, 255, 255);
-    fill(255, 0, 0);
-    text(currentScalar + "x", 0, height * .47);
+    //colorMode(RGB, 255, 255, 255);
+    //fill(255, 0, 0);
+    //text(currentScalar + "x", 0, height * .47);
 
     update_color();
     if (int(currentScalar) > printVal) {
