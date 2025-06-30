@@ -9,7 +9,7 @@ import ddf.minim.ugens.*;
 
 final int WIDTH = 1000, HEIGHT = 500;
 float BLUR_PARAM = .9;
-String audioFileName = "spaceplusone.mp3", title;
+String audioFileName = "spaceplusone.wav", title;
 float fps = 60;
 float smooth_factor = .2;
 
