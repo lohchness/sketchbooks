@@ -10,7 +10,6 @@ import ddf.minim.ugens.*;
 final int WIDTH = 1000, HEIGHT = 500;
 float BLUR_PARAM = .9;
 String audioFileName = "spaceplusone.wav", title;
-float fps = 60;
 float smooth_factor = .2;
 
 // Global variables
@@ -51,7 +50,7 @@ void settings() {
 }
 
 void setup() {
-    frameRate(fps);
+    frameRate(60);
     
     //graphics
     //unit = height / 100;
@@ -63,7 +62,7 @@ void setup() {
     
     minim = new Minim(this);
     track = minim.loadFile(audioFileName, 4096);
-    beat = new BeatDetect();    
+    beat = new BeatDetect();
     track.loop();
     
     initializeFFT();
@@ -76,7 +75,7 @@ void setup() {
 }
 
 void initializeFFT() {
-    track.mute();
+    //track.mute();
 
     fft = new FFT(track.bufferSize(), track.sampleRate());
     
@@ -121,7 +120,7 @@ void draw() {
     
     //drawAll(sum);
     sprayDots();
-    filter(BLUR, BLUR_PARAM);
+    //filter(BLUR, BLUR_PARAM);
     
     draw_base();
     

@@ -56,7 +56,6 @@ void sprayDots() {
         
         if (beat.isOnset()) {
             dot.curr_diameter = dot.base_diameter * 1.25;           
-
         }
         
         
