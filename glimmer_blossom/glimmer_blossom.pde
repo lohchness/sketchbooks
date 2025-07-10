@@ -15,6 +15,7 @@ void setup() {
     size(800, 800);
     strokeWeight(.5);
     stroke(255);
+    background(0);
     
     // initial coords
     for (int i=0; i<amt; i++) {
@@ -50,10 +51,10 @@ void draw() {
                 v = wave1(initialX, initialY, horizontal, vertical);
                 break;
             case 1:
-                v = wave4(initialX, initialY, horizontal, vertical);
+                v = wave3(initialX, initialY, horizontal, vertical);
                 break;
             case 2:
-                v = wave3(initialX, initialY, horizontal, vertical);
+                v = wave4(initialX, initialY, horizontal, vertical);
                 break;
             case 3:
                 v = wave2(initialX, initialY, horizontal, vertical);
@@ -73,8 +74,10 @@ void draw() {
 }
 
 void keyPressed() {
+  if (key == ' ') {
     curr += 1;
     if (curr == max) curr = 0;
+  }
 }
 
 PVector wave1(float initialX, float initialY, float horizontal, float vertical) {
