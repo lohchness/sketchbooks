@@ -65,26 +65,18 @@ float[] bar_length; // curr bar length
 float a = (log(20000 - 20) / log(bands));
 
 void draw_bars() {
-    
     int currx = startX;
-    
     //print(fft.specSize()); // 1025
     //print("\n");
     
     //process specsize to bar_length array
-
     for (int i = 0; i < fft.specSize(); i++) {
-
         target_length[int(map(i, 0, fft.specSize(), 0, BARS))] -= abs(fft.getBand(i));
         //target_length[int(map(i, 0, fft.specSize(), 0, BARS))] -= sum[int(map(i, 0, fft.specSize(), 0, 30))];
     }
     
-    
     float counter = 0;
-    
-    
     for (int i = 0; i < BARS - 10; i++) {
-        
         if (target_length[i] < BAR_MAX_LENGTH) {
             target_length[i] = BAR_MAX_LENGTH;
         }
@@ -100,11 +92,6 @@ void draw_bars() {
         else if (i == 2) {
             target_length[2] = (target_length[2] + target_length[5] + target_length[7]) / 4;
         }
-        
-        //if (target_length[i] < BAR_MAX_LENGTH) {
-        //    target_length[i] = BAR_MAX_LENGTH;
-        //}
-        
         
          //increase size and sensitivity of latter part of bars according to sine wave
         if (i > int(BARS * 1/3)) {

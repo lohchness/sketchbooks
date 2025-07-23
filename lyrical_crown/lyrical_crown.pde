@@ -64,18 +64,19 @@ void setup() {
     track = minim.loadFile(audioFileName, 4096);
     beat = new BeatDetect();
     track.loop();
+    track.setGain(-40);
+    //track.mute();
+
     
     initializeFFT();
     
-    title = audioFileName.substring(0, audioFileName.lastIndexOf("."));
+    //title = audioFileName.substring(0, audioFileName.lastIndexOf("."));
     font = createFont("Gotham Bold", 90);
     textFont(font);
     title = "";
-    //rec(); // export to mp4
 }
 
 void initializeFFT() {
-    //track.mute();
 
     fft = new FFT(track.bufferSize(), track.sampleRate());
     
@@ -103,14 +104,14 @@ void draw() {
     fft.forward(track.mix);
     beat.detect(track.mix);
      //<>//
-    //spectrum = new float[bands];
-    //for (int i = 0; i < fft.avgSize(); i++)
-    //    {
-    //    spectrum[i] = fft.getAvg(i) / 2;
+    spectrum = new float[bands];
+    for (int i = 0; i < fft.avgSize(); i++)
+        {
+        spectrum[i] = fft.getAvg(i) / 2;
         
-    //    // Smooth the FFT spectrum data by smoothing factor
-    //    sum[i] += (abs(spectrum[i]) - sum[i]) * smooth_factor;
-    //}
+        // Smooth the FFT spectrum data by smoothing factor
+        sum[i] += (abs(spectrum[i]) - sum[i]) * smooth_factor;
+    }
     
     //Reset canvas
     fill(0);

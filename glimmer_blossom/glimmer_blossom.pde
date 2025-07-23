@@ -17,13 +17,13 @@ void setup() {
     stroke(255);
     background(0);
     
-    // initial coords
     for (int i=0; i<amt; i++) {
         float initialX = i % 200;
         float initialY = i / 200;
-        // Offsets
+        
         float horizontal = initialX / 8 - 12;
         float vertical = initialY / 8 - 12;
+        
         PVector v = wave1(initialX, initialY, horizontal, vertical);
         currx[i] = v.x;
         curry[i] = v.y;
@@ -81,18 +81,15 @@ void keyPressed() {
 }
 
 PVector wave1(float initialX, float initialY, float horizontal, float vertical) {
-    // Transformation
     float distance = 2 - mag(horizontal, vertical) / ((sin((frames)/90)) + 3.5);
     //float distance = (sin(horizontal * 3) / sin(vertical * 2));
     float wave = 3 * (sin(horizontal / 10) * cos(vertical / 2));
     //float wave = 2 - mag(horizontal, vertical) / ((sin((t2)/30)) + 3.5);
     //float wave = (sin(horizontal * 2) * cos(vertical * 2))
     
-    // Final positions with wave and distance transformations
     float x = ((initialX + wave * horizontal * 4 +
         wave * horizontal * sin(wave + time)) * 0.7
         + horizontal * distance * 2 + 130) * 2;
-    
     float y = ((initialY + wave * initialY / 5 +
         wave * vertical * cos(wave + time + distance) *
         sin(time + wave)) * 1 +
